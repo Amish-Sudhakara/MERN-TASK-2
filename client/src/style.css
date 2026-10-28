@@ -5,8 +5,13 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+  background-attachment: fixed;
   color: #1e293b;
   min-height: 100vh;
   display: flex;
@@ -19,18 +24,22 @@ body {
   background: #ffffff;
   width: 100%;
   max-width: 400px;
-  padding: 36px 32px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  padding: 40px 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 20px 25px -5px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
 }
 
 .card h2 {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   text-align: center;
   color: #0f172a;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .card br {
@@ -39,45 +48,60 @@ body {
 
 .card input {
   width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 16px;
+  padding: 13px 16px;
+  margin-bottom: 18px;
   background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #1e293b;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14.5px;
+  color: #0f172a;
   outline: none;
-  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card input::placeholder {
+  color: #94a3b8;
 }
 
 .card input:focus {
   background-color: #ffffff;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
 }
 
 .card button {
   width: 100%;
-  padding: 12px;
-  margin-top: 4px;
-  background-color: #4f46e5;
+  padding: 13px;
+  margin-top: 6px;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.35);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card button:hover {
-  background-color: #4338ca;
+  background: linear-gradient(135deg, #4338ca 0%, #4f46e5 100%);
+  box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.45);
+  transform: translateY(-1px);
+}
+
+.card button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px 0 rgba(79, 70, 229, 0.3);
 }
 
 .card p {
-  margin-top: 18px;
+  margin-top: 20px;
   text-align: center;
   font-size: 14px;
+  font-weight: 500;
   min-height: 20px;
-  color: #475569;
+  color: #4f46e5;
+  word-break: break-word;
 }
