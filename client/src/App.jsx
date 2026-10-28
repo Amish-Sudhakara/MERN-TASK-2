@@ -14,7 +14,7 @@ export default function App() {
   setMsg(data.message || data.error)
  }
  return (
-  <form onSubmit={submit}>
+  <form className="card" onSubmit={submit}>
    <h2>Sign Up</h2>
    <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required /><br /><br />
    <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required /><br /><br />
