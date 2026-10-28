@@ -5,16 +5,28 @@ export default function App() {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [msg, setMsg] = useState('')
+  const [isError, setIsError] = useState(false)
 
   const submit = async e => {
     e.preventDefault()
-    const res = await fetch('/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    })
-    const data = await res.json()
-    setMsg(data.message || data.error)
+    try {
+      const res = await fetch('/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setIsError(false)
+        setMsg(data.message || 'Signed up successfully')
+      } else {
+        setIsError(true)
+        setMsg(data.error || 'Error signing up')
+      }
+    } catch (err) {
+      setIsError(true)
+      setMsg('Could not connect to server (port 3000)')
+    }
   }
 
   return (
@@ -115,7 +127,7 @@ export default function App() {
           Sign Up
         </button>
 
-        {msg && <p className="status-msg">{msg}</p>}
+        {msg && <p className={`status-msg ${isError ? 'error' : 'success'}`}>{msg}</p>}
 
         <div className="card-footer">
           <a href="#terms">Terms of Service</a>

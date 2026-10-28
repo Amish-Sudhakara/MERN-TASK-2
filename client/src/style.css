@@ -225,10 +225,17 @@ body {
   margin-top: 14px;
   font-size: 13.5px;
   text-align: center;
-  color: #2563eb;
   font-weight: 500;
   min-height: 18px;
   word-break: break-word;
+}
+
+.status-msg.success {
+  color: #16a34a;
+}
+
+.status-msg.error {
+  color: #dc2626;
 }
 
 /* Footer links */
