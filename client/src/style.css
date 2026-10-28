@@ -6,88 +6,264 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #f0f3f8;
+  color: #1e293b;
   min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 24px;
 }
 
+/* Background geometric lines and decorations */
+.bg-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.geometric-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(55deg, rgba(203, 213, 225, 0.4) 1px, transparent 1px),
+    linear-gradient(-35deg, rgba(203, 213, 225, 0.35) 1px, transparent 1px),
+    linear-gradient(115deg, rgba(203, 213, 225, 0.3) 1px, transparent 1px);
+  background-size: 400px 400px, 500px 500px, 600px 600px;
+  background-position: center center;
+  opacity: 0.85;
+}
+
+.dot-grid {
+  position: absolute;
+  width: 160px;
+  height: 120px;
+  background-image: radial-gradient(#94a3b8 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  opacity: 0.55;
+  z-index: 2;
+}
+
+.dot-grid.top-left {
+  top: 48px;
+  left: 64px;
+}
+
+.dot-grid.bottom-right {
+  bottom: 48px;
+  right: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sparkle {
+  width: 24px;
+  height: 24px;
+  color: #cbd5e1;
+  opacity: 0.8;
+}
+
+/* Main card */
 .card {
+  position: relative;
+  z-index: 10;
   background: #ffffff;
   width: 100%;
-  max-width: 380px;
-  padding: 36px 32px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  max-width: 410px;
+  padding: 40px 36px 30px 36px;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  box-shadow: 
+    0 20px 45px -12px rgba(15, 23, 42, 0.08),
+    0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
-.card h2 {
-  margin-bottom: 24px;
+.card-header {
   text-align: center;
-  font-size: 22px;
+  margin-bottom: 26px;
+}
+
+.card-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #172449;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.card-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #172449;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.field-group {
+  margin-bottom: 18px;
+}
+
+.field-group label {
+  display: block;
+  font-size: 13.5px;
   font-weight: 600;
-  color: #0f172a;
-  letter-spacing: -0.01em;
+  color: #334155;
+  margin-bottom: 7px;
 }
 
-.card br {
-  display: none;
-}
-
-.card input {
-  width: 100%;
-  padding: 11px 13px;
-  margin-bottom: 16px;
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #0f172a;
-  outline: none;
+/* Input box with soft blue glow */
+.input-box {
+  background: #ffffff;
+  border: 1.5px solid #a5b4fc;
+  border-radius: 9px;
+  box-shadow: 0 0 0 3.5px rgba(199, 210, 254, 0.5);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 42px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.card input::placeholder {
+.input-box:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4.5px rgba(165, 180, 252, 0.6);
+}
+
+.input-icon {
   color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.card input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+.input-icon.trailing {
+  color: #94a3b8;
+  opacity: 0.8;
 }
 
-.card button {
+.input-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 10px;
+  font-size: 13.5px;
+  color: #1e293b;
   width: 100%;
-  padding: 11px;
-  margin-top: 4px;
-  background-color: #2563eb;
+}
+
+.input-box input::placeholder {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.icon-btn:hover {
+  color: #64748b;
+}
+
+.hint {
+  display: block;
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  height: 42px;
+  margin-top: 20px;
+  background: linear-gradient(180deg, #283764 0%, #1d284c 100%);
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  font-size: 14.5px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  box-shadow: 0 3px 8px rgba(29, 40, 76, 0.22);
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
 }
 
-.card button:hover {
-  background-color: #1d4ed8;
+.submit-btn:hover {
+  background: linear-gradient(180deg, #304278 0%, #22305c 100%);
+  box-shadow: 0 5px 12px rgba(29, 40, 76, 0.3);
 }
 
-.card button:active {
-  background-color: #1e40af;
+.submit-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(29, 40, 76, 0.2);
 }
 
-.card p {
-  margin-top: 18px;
-  text-align: center;
+.status-msg {
+  margin-top: 14px;
   font-size: 13.5px;
+  text-align: center;
+  color: #2563eb;
   font-weight: 500;
-  min-height: 20px;
-  color: #475569;
+  min-height: 18px;
   word-break: break-word;
+}
+
+/* Footer links */
+.card-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 11.5px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.card-footer a {
+  color: #64748b;
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  transition: color 0.15s ease;
+}
+
+.card-footer a:hover {
+  color: #334155;
+}
+
+.card-footer .dot {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .dot-grid {
+    display: none;
+  }
+  .card {
+    padding: 32px 24px 24px 24px;
+  }
 }
